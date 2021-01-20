@@ -20,6 +20,14 @@
 using namespace std;
 //------------------------------------------------------------- Constantes
 
+//------------------------------------------------------------- Fonctions
+
+differenceCaractere(string line, int pos, int carac)
+{
+    int diff=0;
+    while(line.substr(pos+diff, 1)!=carac)
+
+} 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
@@ -53,13 +61,11 @@ Readlog::Readlog(string log_filename, bool filtreH, int hour, bool filtreImg , s
     this->graphName=graphName;
 }
 
-Readlog::~Readlog() {}
+Readlog::~Readlog() {
+
+  
+}
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-
-int main()
-{
-  return 0;
-} 
