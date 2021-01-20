@@ -6,11 +6,15 @@
 *************************************************************************/
 
 //---------- Interface de la classe <${file_base}> (fichier ${file_name}) ------
-#if ! defined ( XXX_H )
-#define XXX_H
+#if ! defined ( READLOG_H )
+#define READLOG_H
+
 
 //--------------------------------------------------- Interfaces utilis�es
+#include <iostream>
+#include <string>
 
+using namespace std;
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
@@ -48,10 +52,10 @@ public:
     //
     // Contrat :
     //
-
-    Readlog ( );
+// a decommenter en temps voulu
+    Readlog (string log_filename,bool filtreH, int hour,bool filtreImg,string graphname );
     // Mode d'emploi :
-    //
+    //Seul et unique constructeur de Readlog
     // Contrat :
     //
 
@@ -85,4 +89,4 @@ private:
 
 //----------------------------------------- Types d�pendants de <${file_base}>
 
-#endif // XXX_H
+#endif // READLOG_H
