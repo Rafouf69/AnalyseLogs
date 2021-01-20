@@ -6,60 +6,60 @@
 *************************************************************************/
 
 //---------- Interface de la classe <${file_base}> (fichier ${file_name}) ------
-#if ! defined ( READLOG_H )
+#if !defined(READLOG_H)
 #define READLOG_H
-
 
 //--------------------------------------------------- Interfaces utilis�es
 #include <iostream>
 #include <string>
-
+#include "Stats.h" 
 using namespace std;
-//------------------------------------------------------------- Constantes 
+//------------------------------------------------------------- Constantes
 
-//------------------------------------------------------------------ Types 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // R�le de la classe <${file_base}>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class Readlog
 {
-//----------------------------------------------------------------- PUBLIC
+    //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- M�thodes publiques
+    //----------------------------------------------------- M�thodes publiques
+    void parseFile();
 
+    //------------------------------------------------- Surcharge d'op�rateurs
 
-//------------------------------------------------- Surcharge d'op�rateurs
- 
+    //-------------------------------------------- Constructeurs - destructeur
 
-//-------------------------------------------- Constructeurs - destructeur
- 
-    Readlog (string log_filename,bool filtreH, int hour,bool filtreImg,string graphname );
+    Readlog(string log_filename, bool filtreH, int hour, bool filtreImg, string graphName);
     // Mode d'emploi :
     //Seul et unique constructeur de Readlog
     // Contrat :
     //
 
-    virtual ~Readlog ( );
+    virtual ~Readlog();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE 
+    //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- M�thodes prot�g�es
+    //----------------------------------------------------- M�thodes prot�g�es
+
+    //-------------------------------------------------------Attributs protégés
     string log_filename;
     bool filtreH;
     int hour;
     bool filtreImg;
-    string graphname;
-//-------------------------------------------------------Attributs protégés   
+    Stats nosStats;
+    string graphName;
 };
 
 #endif // READLOG_H
