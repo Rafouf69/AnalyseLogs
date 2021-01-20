@@ -63,42 +63,14 @@ void Stats::addOccurence(string siteCible)
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Stats::Stats(){} 
+Stats::Stats(){
+  
+} 
 
-Stats::~Stats(){}
+Stats::~Stats(){
+
+}
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-/*
-int main()
-{
-  Stats s;
-  s.addOccurence("A");
-  s.addOccurence("A");
-  s.addOccurence("A");
-  s.addOccurence("A");
-  s.addOccurence("A");
-  s.addOccurence("A");
-  s.addOccurence("A");
-  s.addOccurence("A");
-  s.addOccurence("A");
-  s.addOccurence("A");
-  s.addOccurence("A");
-  s.addOccurence("D");
-  s.addOccurence("D");
-
-  s.addOccurence("D");
-  s.addOccurence("D");
-  s.addOccurence("D");
-  s.addOccurence("D");
-  s.addOccurence("D");
-  s.addOccurence("D");
-  s.addOccurence("D");
-  s.addOccurence("D");
-  s.addOccurence("D");
-  s.addOccurence("g");
-  s.addOccurence("g");
-  s.generateClassement();
-  return 0;
-} */

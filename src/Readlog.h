@@ -12,7 +12,8 @@
 //--------------------------------------------------- Interfaces utilis�es
 #include <iostream>
 #include <string>
-#include "Stats.h" 
+#include "Stats.h"
+
 using namespace std;
 //------------------------------------------------------------- Constantes
 

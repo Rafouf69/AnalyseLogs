@@ -13,7 +13,7 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <string>
-
+#include <fstream>
 //------------------------------------------------------ Include personnel
 #include "Readlog.h"
 #include "Stats.h"
@@ -31,7 +31,7 @@ using namespace std;
 void Readlog::parseFile()
 {
     ifstream logFile;
-    logfile.open(log_filename);
+    logFile.open(log_filename);
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -46,13 +46,11 @@ Readlog::Readlog(string log_filename, bool filtreH, int hour, bool filtreImg , s
     this->graphName=graphName;
 }
 
-Readlog::~Readlog() {}
+Readlog::~Readlog() {
+
+  
+}
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-
-int main()
-{
-  return 0;
-} 

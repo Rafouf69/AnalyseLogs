@@ -16,6 +16,7 @@
 using namespace std;
 //------------------------------------------------------ Include personnel
  #include "Readlog.h"
+ #include "Stats.h" 
 /* A rahuter ReadLog.h et Graph.h */
 //------------------------------------------------------------- Constantes
 #define EXIT_SUCCESS 0

@@ -4,7 +4,7 @@ CFLAGS = -ansi -pedantic -std=c++11 -g -Wall
 LDFLAGS =
 MAP = 
 EXEC = bin/analog
-REAL = src/Analog.cpp src/Readlog.cpp
+REAL = src/Analog.cpp src/Readlog.cpp src/Stats.cpp
 
 
 
