@@ -15,7 +15,7 @@
 #include <string>
 using namespace std;
 //------------------------------------------------------ Include personnel
-
+ #include "Readlog.h"
 /* A rahuter ReadLog.h et Graph.h */
 //------------------------------------------------------------- Constantes
 #define EXIT_SUCCESS 0
@@ -133,7 +133,7 @@ int main(int argc, char* argv[])
 
     cout<<log_fileName<< endl <<filtreH<<endl<<hour<< endl<<filtreImg<< endl<<graphName<< endl;
     /* Readlog(log_fileName,filtreH,hour,filtreImg,Mygraph), */ // a decommenter en temps voulu
-
+    Readlog(log_fileName,filtreH,hour,filtreImg,graphName);
 
 
 
