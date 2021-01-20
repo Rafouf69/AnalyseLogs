@@ -71,7 +71,7 @@ protected:
     map<string, int> nbrOcurrence;
 
     // multimap contenant le classement des sites en fonction de leur nombre d'occurence, la clé est le nombre d'occurence
-    multimap<int, string> classemeent;
+    multimap<int, string> classement;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Stats>
