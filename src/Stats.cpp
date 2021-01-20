@@ -35,15 +35,28 @@ void Stats::generateDot(string fileName)
 
 void Stats::generateClassement()
 {
-
+  for(map<string,int>::iterator it=nbrOcurrence.begin(); it!=nbrOcurrence.end(); ++it)
+  {
+    classement.insert(pair<int, string>(it->second,it->first));
+  } 
+  int i=0;
+  multimap<int , string>::reverse_iterator rit=classement.rbegin();
+  while(i<10 && rit!=classement.rend())
+  {
+    cout << rit->second << " (" << rit->first << " hits)"<<endl;
+    ++rit;
+    ++i;
+  } 
 }
 
 void Stats::addGraphe(string siteCible, string siteReferent)
-{}
+{
+  graphe[siteCible][siteReferent]+=1;  
+}
 
 void Stats::addOccurence(string siteCible)
 {
-
+  nbrOcurrence[siteCible]+=1; 
 } 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -57,4 +70,35 @@ Stats::~Stats(){}
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+/*
+int main()
+{
+  Stats s;
+  s.addOccurence("A");
+  s.addOccurence("A");
+  s.addOccurence("A");
+  s.addOccurence("A");
+  s.addOccurence("A");
+  s.addOccurence("A");
+  s.addOccurence("A");
+  s.addOccurence("A");
+  s.addOccurence("A");
+  s.addOccurence("A");
+  s.addOccurence("A");
+  s.addOccurence("D");
+  s.addOccurence("D");
 
+  s.addOccurence("D");
+  s.addOccurence("D");
+  s.addOccurence("D");
+  s.addOccurence("D");
+  s.addOccurence("D");
+  s.addOccurence("D");
+  s.addOccurence("D");
+  s.addOccurence("D");
+  s.addOccurence("D");
+  s.addOccurence("g");
+  s.addOccurence("g");
+  s.generateClassement();
+  return 0;
+} */
