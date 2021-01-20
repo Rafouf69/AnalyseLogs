@@ -13,7 +13,7 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <string>
-
+#include <fstream> 
 //------------------------------------------------------ Include personnel
 #include "Readlog.h"
 #include "Stats.h"
@@ -31,7 +31,14 @@ using namespace std;
 void Readlog::parseFile()
 {
     ifstream logFile;
-    logfile.open(log_filename);
+    logFile.open(log_filename);
+    char c;
+    string line;
+    while(getline(logFile,line))
+    {
+        int pos=52;
+        
+    } 
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
