@@ -44,7 +44,8 @@ int main(int argc, char* argv[])
 {  
         string log_fileName =  "";
         bool makegraph=false;
-        int filtreH=99;
+        bool filtreH=false;
+        int hour=0;
         bool filtreImg=false;
         string graphName="";
 
@@ -86,10 +87,11 @@ int main(int argc, char* argv[])
                 case 't':
                     if(nextArgCorrect(i, argc, argv))
                     {
+                        filtreH=true;
                         int tmp = atoi(argv[++i]);
                         if (tmp >= 0 && tmp < 24)
                         {
-                            filtreH = tmp;
+                            hour = tmp;
                         }
                         else
                         {
@@ -101,7 +103,7 @@ int main(int argc, char* argv[])
                         cerr << "Error : No hour specified" << endl;
                         return NO_ARG_HOUR;
                     }
-                    cout << "- Filtering log between " << filtreH << "h and " << filtreH + 1 << "h" << endl;
+                    cout << "- Filtering log between " << hour << "h and " << hour + 1 << "h" << endl;
                     break;
                 default:
                     cerr << "Error : Invalid command" << endl;
@@ -129,7 +131,7 @@ int main(int argc, char* argv[])
         return MISSING_LOG_ARG;
     }
 
-    cout<<log_fileName<< endl <<filtreH<< endl<<filtreImg<< endl<<graphName<< endl;
+    cout<<log_fileName<< endl <<filtreH<<endl<<hour<< endl<<filtreImg<< endl<<graphName<< endl;
     /* Readlog(log_fileName,filtreH,filtreImg,Mygraph), */ // a decommenter en temps voulu
 
 
