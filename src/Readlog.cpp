@@ -22,7 +22,7 @@ using namespace std;
 
 //------------------------------------------------------------- Fonctions
 
-differenceCaractere(string line, int pos, int carac)
+differenceCaractere(string line, int pos, const string carac)
 {
     int diff=0;
     while(line.substr(pos+diff, 1)!=carac)
