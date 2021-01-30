@@ -51,7 +51,7 @@ void Stats::generateClassement()
 
 void Stats::addGraphe(string siteCible, string siteReferent)
 {
-  graphe[siteCible][siteReferent]+=1;  
+  graphe[siteCible][siteReferent]+=1;  //as soon as we access with the []operator, default value are 0
 }
 
 void Stats::addOccurence(string siteCible)

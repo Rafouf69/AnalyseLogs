@@ -65,7 +65,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
 
     // double map permettant de stocker le graphe, la première clé est la cible, la deuxième clé est le référent
-    map<string, map<string, int>> graphe;
+    map<string,map<string,int> > graphe;
 
     // map contenant les les sites et leur nombre d'occurence, la clé est la cible
     map<string, int> nbrOcurrence;
