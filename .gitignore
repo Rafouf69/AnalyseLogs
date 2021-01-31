@@ -32,6 +32,5 @@
 *.app
 *.dot
 
-**/tmp
-
-.vscode/*
+.DS_Store
+.vscode
