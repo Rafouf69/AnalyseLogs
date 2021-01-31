@@ -21,3 +21,11 @@ Of course All options are **permutable** and can be added to each other. Please 
 ## Test
 
 Run the command `$ make test` to run all the test. A little feedback will be given.
+
+## Debug Version
+
+Run the command `$ make debug` to generate a debuggable version of the exxecutable
+
+## Clean
+
+Run the command `$ make clean` to clean the folder
