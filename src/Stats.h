@@ -79,4 +79,3 @@ protected:
 //-------------------------------- Autres définitions dépendantes de <Stats>
 
 #endif // Stats_H
-

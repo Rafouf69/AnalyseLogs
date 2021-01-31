@@ -1,0 +1,14 @@
+digraph {
+node0 [label="http://intranet-if.insa-lyon.fr/temps/3IF38.html"];
+node1 [label="http://intranet-if.insa-lyon.fr/temps/"];
+node2 [label="http://intranet-if.insa-lyon.fr/SiteWebIF/Intranet-etudiant.php"];
+node3 [label="http://intranet-if.insa-lyon.fr/temps/suivant.gif"];
+node4 [label="http://intranet-if.insa-lyon.fr/temps/style_emploi_du_temps.css"];
+node5 [label="http://intranet-if.insa-lyon.fr/temps/precedent.gif"];
+node6 [label="http://intranet-if.insa-lyon.fr/temps/choix.gif"];
+node7 [label="http://intranet-if.insa-lyon.fr/temps/InsaIF.ico"];
+node8 [label="http://intranet-if.insa-lyon.fr/temps/FondInsa.jpg"];
+node9 [label="http://intranet-if.insa-lyon.fr/temps/4IF20.html"];
+node4 -> node1 [label="1"];
+node8 -> node4 [label="1"];
+}

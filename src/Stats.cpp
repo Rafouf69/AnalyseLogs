@@ -31,7 +31,7 @@ using namespace std;
 //} //----- Fin de Méthode
 void Stats::generateDot(string fileName)
 {
-  int size=classement.size();
+  
   ofstream Myoutput (fileName);
 	streambuf *oldCoutBuffer = cout.rdbuf ( Myoutput.rdbuf ( ) );
   cout<<"digraph {\n";

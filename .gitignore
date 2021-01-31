@@ -28,6 +28,10 @@
 
 # Executables
 *.exe
-*.out
+*.ou
 *.app
 *.dot
+
+**/tmp
+
+.vscode/*
