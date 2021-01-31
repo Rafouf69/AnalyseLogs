@@ -44,10 +44,10 @@ void Readlog::parseFile()
     ifstream logFile;
     logFile.open(log_filename);
     string line;
-    regex words_regex("\"([^\"]*)\"");
-    regex extension("^.*\\.(jpg|JPG|gif|png|GIF|js|css|ico)$");
-    regex hourtype("\\[(.*)\\]");;;
-    regex patternDEST("( /([^ ]+)?)"); //paternderecherchedeDestination
+    regex words_regex("\"([^\"]*)\""); //entre guillmet
+    regex extension("^.*\\.(jpg|JPG|gif|png|GIF|js|css|ico)$");//checkextension
+    regex hourtype("\\[(.*)\\]");//entrecrochet
+    regex patternDEST("( /([^ ]+)?)"); //présence de espace crochet " /"
     while(getline(logFile,line)){
         auto words_begin = sregex_iterator(line.begin(), line.end(), words_regex);
         auto words_end = sregex_iterator();
@@ -56,12 +56,12 @@ void Readlog::parseFile()
         auto hour_end = sregex_iterator();
         //cout << "Found " << distance(words_begin, words_end) << " words:\n"; //Prouver 1 seul heure entre crochet à chaque fois
         
-        //traitement heure
+        //filtrage heure
         if(filtreH)
         {
            sregex_iterator o = hour_begin; 
            string hourcompare = (*o).str(); 
-           hourcompare.replace(0,13,"");
+           hourcompare.replace(0,13,"");    //La valeur entre crochet dispose d'un nombre de caractère fixe -->travaille sur place des caractères
            hourcompare.replace(2,hourcompare.length(),"");
            int hourtocompare= stoi(hourcompare);
            //cout<<hourcompare<<endl;
@@ -80,14 +80,14 @@ void Readlog::parseFile()
         regex_search(dest, match, patternDEST);
         dest=match[0];
         dest.replace(0,1,"");
-        //cout<<"dest="<<dest<<endl;
-        dest= "http://intranet-if.insa-lyon.fr"+dest;//forme finale de la dest (à améliorer dynamiqument)
+        dest= "http://intranet-if.insa-lyon.fr"+dest;//forme finale de la dest
         
+        //filtrage type de destination
         if(filtreImg)
         {
             if(regex_match(dest, extension))
             {
-                // cout<<"non pris en compte"<<endl;
+                
                 continue;
             }
         }
@@ -100,7 +100,13 @@ void Readlog::parseFile()
         string src = (*i).str(); 
         src.replace(src.length()-1,src.length(),"");
         src.replace(0,1,""); //forme finale de la source
+
+        //ici ajouter verification addresse locale et continue si commences pas par intranet
         
+
+        //tentative adresse de base dynamique ->echec souci adresses relatives par rapport à quoi?
+        //Bah addresse local donc intranet-if et pas la source à droite
+        /* 
         int count=0;
         int n = src.length();
         char char_array[n + 1];
@@ -122,16 +128,14 @@ void Readlog::parseFile()
            
         }
         string sfinal(char_array);
-       
-        //cout<<"sfinal "<<sfinal<<endl;
         //dest=sfinal+dest;
-        //cout<<dest<<endl<<src<<endl;
+        */
+    
+
+
         myStats.addGraphe(dest,src);
         myStats.addOccurence(dest);
 
-
-        //cout<<dest<<endl; // a commenter
-        //cout<<src<<endl; 
     }
     myStats.generateClassement();
     if (graph)
