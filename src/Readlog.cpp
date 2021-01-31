@@ -22,11 +22,6 @@ using namespace std;
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------- Fonctions
-string findwrd(string const &s, regex const &r) { 
-    smatch match;
-    regex_search(s, match, r);
-    return match[0];
-}
 
 void differenceCaractere(string line, int pos, const string carac)
 {
@@ -44,23 +39,47 @@ void differenceCaractere(string line, int pos, const string carac)
 //} //----- Fin de Méthode
 void Readlog::parseFile()
 {
+    Stats myStats;
     ifstream logFile;
     logFile.open(log_filename);
     string line;
+    regex words_regex("\"([^\"]*)\"");
     regex patternDEST("( /([^ ]+)?)"); //paternderecherchedeDestination
-    regex patternSRC("(\"http://intranet-if.insa-lyon.fr([^ ]+)?)");//paternderecherchedeorigine
     while(getline(logFile,line)){
+
+ 
         
-        string dest=findwrd(line, patternDEST);
-        dest.replace(0,1,""); //enlever l'espace présent au début
-        
-        string sec=findwrd(line, patternSRC); 
-        sec.replace(0,32,""); //enlever les 32 premier caractère (lié à la longueuur du patternSRC)
-        sec.replace(sec.length()-1,sec.length(),""); // enlever la dernière parenthese
-        
-        cout<<dest<<endl; // a commenter
-        cout<<sec<<endl;
+        auto words_begin = sregex_iterator(line.begin(), line.end(), words_regex);
+        auto words_end = sregex_iterator();
+        // cout << "Found " << distance(words_begin, words_end) << " words:\n"; //Prouver 3 mot entre paretnhese à chaque fois
+ 
+        //traitement de la destination
+        sregex_iterator i = words_begin;                                                
+        string dest = (*i).str(); 
+        dest.replace(dest.length()-1,dest.length(),"");
+        dest.replace(0,1,"");
+        smatch match;
+        regex_search(dest, match, patternDEST);
+        dest=match[0];
+        dest.replace(0,1,"");
+        dest= "http://intranet-if.insa-lyon.fr"+dest; //forme finale de la dest
+
+
+      
+
+
+        i++;
+        //traitement de la source 
+        string src = (*i).str(); 
+        src.replace(src.length()-1,src.length(),"");
+        src.replace(0,1,""); //forme finale de la source
+        myStats.addGraphe(dest,src);
+        myStats.addOccurence(dest);
+
+        //cout<<dest<<endl; // a commenter
+        //cout<<src<<endl; 
     }
+    myStats.generateClassement();
         
        
 }
