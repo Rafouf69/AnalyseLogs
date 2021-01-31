@@ -37,7 +37,7 @@ public:
 
     //-------------------------------------------- Constructeurs - destructeur
 
-    Readlog(string log_filename, bool filtreH, int hour, bool filtreImg, string graphName);
+    Readlog(string log_filename, bool filtreH, int hour, bool filtreImg,bool graph, string graphName);
     // Mode d'emploi :
     //Seul et unique constructeur de Readlog
     // Contrat :
@@ -59,6 +59,7 @@ protected:
     bool filtreH;
     int hour;
     bool filtreImg;
+    bool graph;
     Stats nosStats;
     string graphName;
 };

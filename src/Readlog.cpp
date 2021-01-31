@@ -15,6 +15,7 @@
 #include <string>
 #include <fstream> 
 #include <regex>
+
 //------------------------------------------------------ Include personnel
 #include "Readlog.h"
 #include "Stats.h"
@@ -79,6 +80,7 @@ void Readlog::parseFile()
         regex_search(dest, match, patternDEST);
         dest=match[0];
         dest.replace(0,1,"");
+        //cout<<"dest="<<dest<<endl;
         dest= "http://intranet-if.insa-lyon.fr"+dest;//forme finale de la dest (à améliorer dynamiqument)
         
         if(filtreImg)
@@ -98,10 +100,32 @@ void Readlog::parseFile()
         string src = (*i).str(); 
         src.replace(src.length()-1,src.length(),"");
         src.replace(0,1,""); //forme finale de la source
+        
+        int count=0;
+        int n = src.length();
+        char char_array[n + 1];
 
-
-
-
+        for (int i = 0; i < n+1; i++)
+        {
+            if (src[i]=='/')
+            {
+                count++;
+            }
+           
+            if (count==3)
+            {
+                break;
+            }
+            //cout<<src[i]<<endl;
+            char_array[i] = src[i];
+            //cout<<char_array[i]<<endl;
+           
+        }
+        string sfinal(char_array);
+       
+        //cout<<"sfinal "<<sfinal<<endl;
+        //dest=sfinal+dest;
+        //cout<<dest<<endl<<src<<endl;
         myStats.addGraphe(dest,src);
         myStats.addOccurence(dest);
 
@@ -110,6 +134,10 @@ void Readlog::parseFile()
         //cout<<src<<endl; 
     }
     myStats.generateClassement();
+    if (graph)
+    {
+        myStats.generateDot(graphName);
+    }
         
        
 }
@@ -117,13 +145,14 @@ void Readlog::parseFile()
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-Readlog::Readlog(string log_filename, bool filtreH, int hour, bool filtreImg , string graphName)
+Readlog::Readlog(string log_filename, bool filtreH, int hour, bool filtreImg ,bool graph, string graphName)
 {
     this->log_filename=log_filename;
     this->filtreH=filtreH;
     this->hour=hour;
     this->filtreImg=filtreImg;
     this->graphName=graphName;
+    this->graph=graph;
 }
 
 Readlog::~Readlog() {

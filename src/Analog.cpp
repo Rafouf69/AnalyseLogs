@@ -139,7 +139,7 @@ int main(int argc, char* argv[])
 
     //cout<<log_fileName<< endl <<filtreH<<endl<<hour<< endl<<filtreImg<< endl<<graphName<< endl;
     /* Readlog(log_fileName,filtreH,hour,filtreImg,Mygraph), */ // a decommenter en temps voulu
-    Readlog myReadLog=Readlog(log_fileName,filtreH,hour,filtreImg,graphName);
+    Readlog myReadLog=Readlog(log_fileName,filtreH,hour,filtreImg,makegraph,graphName);
     myReadLog.parseFile();
     
 
