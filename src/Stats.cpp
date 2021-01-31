@@ -48,6 +48,21 @@ void Stats::generateClassement()
     ++i;
   } 
 }
+void Stats::dataTreatment(bool dot, string dotname, bool filterImg, bool filterHour, int hour)
+{
+    if (dot)
+    {
+      generateDot(dotname);
+    }
+    if (filterImg)
+    {
+      generateDot(dotname);
+    }
+}
+
+multimap<int, string>& Stats::getClassement(){
+  return classement;
+}
 
 void Stats::addGraphe(string siteCible, string siteReferent)
 {

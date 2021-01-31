@@ -39,12 +39,14 @@ public:
     // Contrat :
     //
     void generateDot(string fileName);
-
+    void dataTreatment(bool dot, string dotname, bool filterImg, bool filterHour, int hour);
     void generateClassement();
 
     void addGraphe(string siteCible, string siteReferent);
 
     void addOccurence(string siteCible);
+
+    multimap<int, string>& getClassement();
 //------------------------------------------------- Surcharge d'opérateurs
 
 

@@ -44,16 +44,33 @@ void Readlog::parseFile()
     logFile.open(log_filename);
     string line;
     regex words_regex("\"([^\"]*)\"");
+    regex extension("^.*\\.(jpg|JPG|gif|png|GIF|js|css|ico)$");
+    regex hourtype("\\[(.*)\\]");;;
     regex patternDEST("( /([^ ]+)?)"); //paternderecherchedeDestination
     while(getline(logFile,line)){
-
- 
-        
         auto words_begin = sregex_iterator(line.begin(), line.end(), words_regex);
         auto words_end = sregex_iterator();
-        // cout << "Found " << distance(words_begin, words_end) << " words:\n"; //Prouver 3 mot entre paretnhese à chaque fois
- 
+        //cout << "Found " << distance(words_begin, words_end) << " words:\n"; //Prouver 3 mot entre paretnhese à chaque fois
+        auto hour_begin = sregex_iterator(line.begin(), line.end(), hourtype);
+        auto hour_end = sregex_iterator();
+        //cout << "Found " << distance(words_begin, words_end) << " words:\n"; //Prouver 1 seul heure entre crochet à chaque fois
+        
+        //traitement heure
+        if(filtreH)
+        {
+           sregex_iterator o = hour_begin; 
+           string hourcompare = (*o).str(); 
+           hourcompare.replace(0,13,"");
+           hourcompare.replace(2,hourcompare.length(),"");
+           int hourtocompare= stoi(hourcompare);
+           //cout<<hourcompare<<endl;
+           if (hourtocompare!=hour)
+           {
+               continue;
+           }
+        }
         //traitement de la destination
+        
         sregex_iterator i = words_begin;                                                
         string dest = (*i).str(); 
         dest.replace(dest.length()-1,dest.length(),"");
@@ -62,19 +79,32 @@ void Readlog::parseFile()
         regex_search(dest, match, patternDEST);
         dest=match[0];
         dest.replace(0,1,"");
-        dest= "http://intranet-if.insa-lyon.fr"+dest; //forme finale de la dest
-
-
-      
-
-
+        dest= "http://intranet-if.insa-lyon.fr"+dest;//forme finale de la dest (à améliorer dynamiqument)
+        
+        if(filtreImg)
+        {
+            if(regex_match(dest, extension))
+            {
+                // cout<<"non pris en compte"<<endl;
+                continue;
+            }
+        }
+        
+       
         i++;
+        
+
         //traitement de la source 
         string src = (*i).str(); 
         src.replace(src.length()-1,src.length(),"");
         src.replace(0,1,""); //forme finale de la source
+
+
+
+
         myStats.addGraphe(dest,src);
         myStats.addOccurence(dest);
+
 
         //cout<<dest<<endl; // a commenter
         //cout<<src<<endl; 

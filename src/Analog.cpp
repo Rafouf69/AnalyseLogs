@@ -29,11 +29,16 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 bool nextArgCorrect(int index, int size, char** args, string extension = "")
 {
+    //cout<<args[index+1]<<endl;
+    //cout<<index+1<<endl;
+    //cout<<size-1<<endl;
+    
     if(index+1 < size-1)
     {
         if(args[index+1][0] != '-')
         {
             string s = args[index+1];
+            //cout<<s<<endl;
             if(s.find(extension) != string::npos)
                 return true;
         }
@@ -82,7 +87,7 @@ int main(int argc, char* argv[])
 
                 case 'e':
                     filtreImg = true;
-                    cout << "- Do not considere css, js, jpeg" << endl;
+                    cout << "- Do not considere jpg, JPG, gif, png, GIF, js, css, ico" << endl;
                     break;
 
                 case 't':
@@ -132,7 +137,7 @@ int main(int argc, char* argv[])
         return MISSING_LOG_ARG;
     }
 
-    cout<<log_fileName<< endl <<filtreH<<endl<<hour<< endl<<filtreImg<< endl<<graphName<< endl;
+    //cout<<log_fileName<< endl <<filtreH<<endl<<hour<< endl<<filtreImg<< endl<<graphName<< endl;
     /* Readlog(log_fileName,filtreH,hour,filtreImg,Mygraph), */ // a decommenter en temps voulu
     Readlog myReadLog=Readlog(log_fileName,filtreH,hour,filtreImg,graphName);
     myReadLog.parseFile();
