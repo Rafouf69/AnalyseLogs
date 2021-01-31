@@ -26,6 +26,13 @@ using namespace std;
 #define NO_ARG_HOUR 7
 #define INVALID_COMMAND 100
 //----------------------------------------------------------------- PUBLIC
+void displayHelp()
+{
+    cout << "-h                   : Display this message" << endl;
+    cout << "-e [filter]          : Filter out all requested urls not containing the [filter] string. Referer urls are not affected. Default filter is \".html\"" << endl;
+    cout << "-g dot_file_name     : Generate a Dot-file out of the analysed log file" << endl;
+    cout << "-t hour              : Filter out every request not sent within the interval [hour ; hour+1]" << endl;
+}//-------Fin de displayHelp
 //----------------------------------------------------- Méthodes publiques
 bool nextArgCorrect(int index, int size, char** args, string extension = "")
 {
@@ -111,6 +118,12 @@ int main(int argc, char* argv[])
                     }
                     cout << "- Filtering log between " << hour << "h and " << hour + 1 << "h" << endl;
                     break;
+                
+                case 'h':
+                    displayHelp();
+                    return EXIT_SUCCESS;
+                    break;
+
                 default:
                     cerr << "Error : Invalid command" << endl;
                     cout << "- Use ./analog -h for help" << endl;

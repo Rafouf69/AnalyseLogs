@@ -9,12 +9,12 @@ Then you can run `$ bin/analog [YOURAPPACHELOGFILE]` where `[YOURAPPACHELOGFILE]
 
 ## Options
 
-| Option                    | Code exemple                                  | Description                                                                                        |
-| ------------------------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-|                           | `$ /bin/analog /tmp/versioncourt.log`         | Give you the 10+ most visited website                                                              |
-| -g [(Optionnal) Filename] | `$ /bin/analog -g /tmp/versioncourt.log`      | Generate a .dot with the 10+ most visited website. default ouputname is out.dot"                   |
-| -t [HOUR]                 | `$ /bin/analog -t[12] /tmp/versioncourt.log"` | Give you the 10+ most visited URL, filtered by hour between HOUR and HOUR+1                        |
-| -e                        | `$ /bin/analog e /tmp/versioncourt.log"`      | Give you the 10+ most visited URL, without the jpg, JPG, gif, png, GIF, js, css, and ico extension |
+| Option                    | Code exemple                                  | Description                                                                      |
+| ------------------------- | --------------------------------------------- | -------------------------------------------------------------------------------- |
+|                           | `$ /bin/analog /tmp/versioncourt.log`         | Give you the 10+ most visited website                                            |
+| -g [(Optionnal) Filename] | `$ /bin/analog -g /tmp/versioncourt.log`      | Generate a .dot with the 10+ most visited website. default ouputname is out.dot" |
+| -t [HOUR]                 | `$ /bin/analog -t[12] /tmp/versioncourt.log"` | Give you the 10+ most visited URL, filtered by hour between HOUR and HOUR+1      |
+| -h                        | `$ /bin/analog h"`                            | Display Help                                                                     |
 
 Of course All options are **permutable** and can be added to each other. Please note that **your code must finish with your appachelog filename**
 
