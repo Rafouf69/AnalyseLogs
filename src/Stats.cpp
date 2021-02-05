@@ -36,34 +36,27 @@ void Stats::generateDot(string fileName)
 	streambuf *oldCoutBuffer = cout.rdbuf ( Myoutput.rdbuf ( ) );
   cout<<"digraph {\n";
   int i=0;
-  multimap<int , string>::reverse_iterator rit=classement.rbegin();
-  string s;
-  string tablstring[10];
-  while(i<10 && rit!=classement.rend())
+  map<string, int> table;
+  for(map<string, map<string,int>>::iterator it=graphe.begin();it!=graphe.end();it++)
   {
-    tablstring[i]=rit->second;
-    
-    s= "node" +to_string(i)+ " [label=\"" +rit->second+"\"];";
-    cout<<s<<endl;
-    ++rit;
-    ++i;
-  } 
-  int nb=0;
-  while(nb<10)
-  {
-    i=0;
-    rit=classement.rbegin();
-    while(i<10 && rit!=classement.rend())
-    {
-      if ( graphe[tablstring[nb]][tablstring[i]]!=0)
-      { 
-        s= "node" +to_string(nb)+ " -> " +"node" +to_string(i)+" [label=\""+to_string(graphe[tablstring[nb]][tablstring[i]])+"\"];";
-        cout<<s<<endl;
-      }
-      ++rit;
-      ++i;
+    table.emplace(it->first, table.size());
+    for(map<string,int>::iterator it2=it->second.begin(); it2!=it->second.end();it2++)
+    { 
+      table.emplace(it2->first, table.size());
     } 
-    nb++;
+  } 
+  
+  for(map<string,int>::iterator it=table.begin(); it!=table.end();it++)
+  {
+    cout<<"node"<<it->second<<" [label=\""<<it->first<<"\"];"<<endl;
+  } 
+
+  for(map<string, map<string,int>>::iterator it=graphe.begin();it!=graphe.end();it++)
+  {
+    for(map<string,int>::iterator it2=it->second.begin(); it2!=it->second.end();it2++)
+    { 
+      cout<<"node"<<to_string(table[it2->first])<<" -> "<<"node" <<to_string(table[it->first])<<" [label=\""<<to_string(it2->second)<<"\"];"<<endl;   
+    } 
   }
   cout<<"}";
   

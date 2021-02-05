@@ -94,7 +94,7 @@ int main(int argc, char* argv[])
 
                 case 'e':
                     filtreImg = true;
-                    cout << "- Do not considere jpg, JPG, gif, png, GIF, js, css, ico" << endl;
+                    cout << "- Do not considere jpg, JPG, gif, png, GIF, js, css, ico, bmp" << endl;
                     break;
 
                 case 't':

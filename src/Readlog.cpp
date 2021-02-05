@@ -45,7 +45,7 @@ void Readlog::parseFile()
     logFile.open(log_filename);
     string line;
     regex words_regex("\"([^\"]*)\""); //entre guillmet
-    regex extension("^.*\\.(jpg|JPG|gif|png|GIF|js|css|ico)$");//checkextension
+    regex extension("^.*\\.(jpg|JPG|gif|png|GIF|js|css|ico|bmp)$");//checkextension
     regex hourtype("\\[(.*)\\]");//entrecrochet
     regex patternDEST("( /([^ ]+)?)"); //présence de espace crochet " /"
     while(getline(logFile,line)){
