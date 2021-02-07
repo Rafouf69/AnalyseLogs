@@ -12,7 +12,7 @@ Then you can run `$ bin/analog [YOURAPPACHELOGFILE]` where `[YOURAPPACHELOGFILE]
 | Option                    | Code exemple                                  | Description                                                                      |
 | ------------------------- | --------------------------------------------- | -------------------------------------------------------------------------------- |
 |                           | `$ /bin/analog /tmp/versioncourt.log`         | Give you the 10+ most visited website                                            |
-| -g [(Optionnal) Filename] | `$ /bin/analog -g /tmp/versioncourt.log`      | Generate a .dot. default ouputname is out.dot"                                   |
+| -g [(Optionnal) Filename] | `$ /bin/analog -g /tmp/versioncourt.log`      | Generate a .dot. default ouputname is out.dot                                    |
 | -t [HOUR]                 | `$ /bin/analog -t[12] /tmp/versioncourt.log"` | Give you the 10+ most visited URL, filtered by hour between HOUR and HOUR+1      |
 | -h                        | `$ /bin/analog h"`                            | Display Help                                                                     |
 
